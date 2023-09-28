@@ -6,15 +6,67 @@ using System.Linq;
 
 namespace BMI_Project
 {
+    public class Person
+    {
+        public string Name { get; set; }
+        public double Weight { get; set; }
+        public double Height { get; set; }
+        public void AddPerson()
+        {
+            Console.WriteLine("Please enter name:");
+            Name = Console.ReadLine();
+            Console.WriteLine("Please enter weight:");
+            Weight = double.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter height:");
+            Height = double.Parse(Console.ReadLine());
+            
+            
+        }
+    }
     public class Program
     {
+        public static List<Person> people = new List<Person>();
         public static void Main()
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
             Console.WriteLine("Welcome!");
+            int option = ShowMenu("Please choose:", new[]
+            {
+                "Set weight and height",
+                "Calculate BMI",
+                "Show previous BMI values",
+                "Remove all BMI values",
+                "Exit"
+            });
+            if (option == 0) 
+            {
+                Person person = new Person();
+                {
+                    person.AddPerson();
+                    people.Add(person);
+                }
+            }
+            else if (option == 1)
+            {
+
+            }
+            else if (option == 2)
+            {
+
+            }
+            else if (option == 3)
+            {
+
+            }
+            else if (option == 4)
+            {
+                Console.WriteLine("Thank you for using BMI Tracker!");
+                Environment.Exit(0);
+            }
 
         }
+        #region
         public static int ShowMenu(string prompt, IEnumerable<string> options)
         {
             if (options == null || options.Count() == 0)
@@ -91,6 +143,7 @@ namespace BMI_Project
             Console.CursorVisible = true;
             return selected;
         }
+        #endregion
     }
 
     [TestClass]
