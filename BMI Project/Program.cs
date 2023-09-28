@@ -13,6 +13,7 @@ namespace BMI_Project
         public double Height { get; set; }
         public void AddPerson()
         {
+            Console.Clear();
             Console.WriteLine("Please enter name:");
             Name = Console.ReadLine();
             Console.WriteLine("Please enter weight:");
@@ -29,42 +30,46 @@ namespace BMI_Project
         public static void Main()
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-
             Console.WriteLine("Welcome!");
-            int option = ShowMenu("Please choose:", new[]
+            bool running = true;
+            while (running)
             {
+
+                Console.Clear();
+                int option = ShowMenu("Please choose:", new[]
+                {
                 "Set weight and height",
                 "Calculate BMI",
                 "Show previous BMI values",
                 "Remove all BMI values",
                 "Exit"
-            });
-            if (option == 0) 
-            {
-                Person person = new Person();
+                });
+                if (option == 0)
                 {
-                    person.AddPerson();
-                    people.Add(person);
+                    Person person = new Person();
+                    {
+                        person.AddPerson();
+                        people.Add(person);
+                    }
+                }
+                else if (option == 1)
+                {
+
+                }
+                else if (option == 2)
+                {
+
+                }
+                else if (option == 3)
+                {
+
+                }
+                else if (option == 4)
+                {
+                    Console.WriteLine("Thank you for using BMI Tracker!");
+                    Environment.Exit(0);
                 }
             }
-            else if (option == 1)
-            {
-
-            }
-            else if (option == 2)
-            {
-
-            }
-            else if (option == 3)
-            {
-
-            }
-            else if (option == 4)
-            {
-                Console.WriteLine("Thank you for using BMI Tracker!");
-                Environment.Exit(0);
-            }
-
         }
         #region
         public static int ShowMenu(string prompt, IEnumerable<string> options)
