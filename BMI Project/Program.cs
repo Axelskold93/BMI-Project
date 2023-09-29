@@ -32,6 +32,16 @@ namespace BMI_Project
             BMIS.Add(currentBMI);
             Console.ReadKey();
         }
+        public void ShowBMI()
+        {
+            Console.Clear();
+            Console.WriteLine($"All registred BMI values:");
+            foreach (double currentBMI in BMIS)
+            {               
+                Console.Write($"{currentBMI:N1},\n");
+            }
+            Console.ReadKey();
+        }
     }
     public class Program
     {
@@ -66,11 +76,11 @@ namespace BMI_Project
                 }
                 else if (option == 2)
                 {
-                    
+                    person.ShowBMI();
                 }
                 else if (option == 3)
                 {
-
+                    
                 }
                 else if (option == 4)
                 {
