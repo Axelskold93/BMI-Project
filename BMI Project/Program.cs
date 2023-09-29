@@ -11,7 +11,9 @@ namespace BMI_Project
         public string Name { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
-        public void AddPerson()
+        public List<double> BMIS = new List<double>();
+        public List<Person> people = new List<Person>();
+        public void SetPersonValues()
         {
             Console.Clear();
             Console.WriteLine("Please enter name:");
@@ -20,16 +22,25 @@ namespace BMI_Project
             Weight = double.Parse(Console.ReadLine());
             Console.WriteLine("Please enter height:");
             Height = double.Parse(Console.ReadLine());
-            
-            
+            people.Add(new Person { Name = Name, Weight = Weight, Height = Height});
+        }
+        public void CalculateBMI()
+        {
+            Console.Clear();
+            double currentBMI = Weight / (Height * Height);
+            Console.WriteLine($"Current BMI: {currentBMI:N1}.");
+            BMIS.Add(currentBMI);
+            Console.ReadKey();
         }
     }
     public class Program
     {
-        public static List<Person> people = new List<Person>();
+        
+        public static List<double> BMIS = new List<double>();
         public static void Main()
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            Person person = new Person();
             Console.WriteLine("Welcome!");
             bool running = true;
             while (running)
@@ -46,19 +57,16 @@ namespace BMI_Project
                 });
                 if (option == 0)
                 {
-                    Person person = new Person();
-                    {
-                        person.AddPerson();
-                        people.Add(person);
-                    }
+                    person.SetPersonValues();
+                            
                 }
                 else if (option == 1)
                 {
-
+                    person.CalculateBMI();
                 }
                 else if (option == 2)
                 {
-
+                    
                 }
                 else if (option == 3)
                 {
