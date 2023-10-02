@@ -8,7 +8,7 @@ namespace BMI_Project
 {
     public class Person
     {
-        public string Name { get; set; }
+        
         public double Weight { get; set; }
         public double Height { get; set; }
         public List<double> BMIS = new List<double>();
@@ -16,18 +16,16 @@ namespace BMI_Project
         public void SetPersonValues()
         {
             Console.Clear();
-            Console.WriteLine("Please enter name:");
-            Name = Console.ReadLine();
-            Console.WriteLine("Please enter weight:");
+            Console.WriteLine("Please enter weight in pounds:");
             Weight = double.Parse(Console.ReadLine());
-            Console.WriteLine("Please enter height:");
+            Console.WriteLine("Please enter height in inches:");
             Height = double.Parse(Console.ReadLine());
-            people.Add(new Person { Name = Name, Weight = Weight, Height = Height});
+            people.Add(new Person { Weight = Weight, Height = Height});
         }
         public void CalculateBMI()
         {
             Console.Clear();
-            double currentBMI = Weight / (Height * Height);
+            double currentBMI = Weight / (Height * Height) * 703;
             Console.WriteLine($"Current BMI: {currentBMI:N1}.");
             BMIS.Add(currentBMI);
             Console.ReadKey();
