@@ -8,7 +8,7 @@ namespace BMI_Project
 {
     public class Person
     {
-        public string Name { get; set; }
+        
         public double Weight { get; set; }
         public double Height { get; set; }
         public List<double> BMIS = new List<double>();
@@ -16,18 +16,25 @@ namespace BMI_Project
         public void SetPersonValues()
         {
             Console.Clear();
-            Console.WriteLine("Please enter name:");
-            Name = Console.ReadLine();
             Console.WriteLine("Please enter weight:");
             Weight = double.Parse(Console.ReadLine());
             Console.WriteLine("Please enter height:");
             Height = double.Parse(Console.ReadLine());
-            people.Add(new Person { Name = Name, Weight = Weight, Height = Height});
+            people.Add(new Person { Weight = Weight, Height = Height});
         }
-        public void CalculateBMI()
+        
+        public void CalculateBMIMetric()
         {
             Console.Clear();
             double currentBMI = Weight / (Height * Height);
+            Console.WriteLine($"Current BMI: {currentBMI:N1}.");
+            BMIS.Add(currentBMI);
+            Console.ReadKey();
+        }
+        public void CalculateBMIImperial()
+        {
+            Console.Clear();
+            double currentBMI = Weight * (Height * Height) * 703;
             Console.WriteLine($"Current BMI: {currentBMI:N1}.");
             BMIS.Add(currentBMI);
             Console.ReadKey();
@@ -71,12 +78,23 @@ namespace BMI_Project
                 });
                 if (option == 0)
                 {
-                    person.SetPersonValues();
-                            
+                    person.SetPersonValues();                         
                 }
                 else if (option == 1)
                 {
-                    person.CalculateBMI();
+                    int option2 = ShowMenu("Please choose:", new[]
+                    {
+                    "Metric",
+                    "Imperial"
+                    });
+                    if (option2 == 0)
+                    {
+                        person.CalculateBMIMetric();
+                    }
+                    else if (option2 == 1)
+                    {
+                        person.CalculateBMIImperial();
+                    }
                 }
                 else if (option == 2)
                 {
