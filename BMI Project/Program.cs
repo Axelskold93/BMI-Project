@@ -38,15 +38,19 @@ namespace BMI_Project
             Console.WriteLine($"All registred BMI values:");
             foreach (double currentBMI in BMIS)
             {               
-                Console.Write($"{currentBMI:N1},\n");
+                Console.Write($"{currentBMI:N1}\n");
             }
             Console.ReadKey();
+        }
+        public void ClearList()
+        {
+            BMIS.Clear();
         }
     }
     public class Program
     {
         
-        public static List<double> BMIS = new List<double>();
+      
         public static void Main()
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -80,7 +84,7 @@ namespace BMI_Project
                 }
                 else if (option == 3)
                 {
-                    
+                    person.ClearList();
                 }
                 else if (option == 4)
                 {
